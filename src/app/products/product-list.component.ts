@@ -56,4 +56,9 @@ export class ProductListComponent implements OnInit {
     this.pageTitle = `Product List : ${message}`;
   }
 
+  setVariableT(): void {
+    console.log(`Called from product-list component, value before set = ${this._productService.getShareVariable()}`)
+    this._productService.setShareVariable('Set from product-list Component!');
+  }
+
 }

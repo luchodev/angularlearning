@@ -10,18 +10,26 @@ import { IProduct } from "./product";
 @Injectable()
 export class ProductService {
   private _productUrl = './api/products/products.json'
+  private shareVariable: string = 'With default value'
 
   constructor(private _http: HttpClient) { }
 
   getProducts(): Observable<IProduct[]> {
     return this._http.get<IProduct[]>(this._productUrl)
-            .do(data => console.log(`All: ${JSON.stringify(data)}`))
-            .catch(this.handleError)
+      .do(data => console.log(`All: ${JSON.stringify(data)}`))
+      .catch(this.handleError)
   }
 
-  private handleError(err: HttpErrorResponse){
+  private handleError(err: HttpErrorResponse) {
     console.log(`Error ${err.message}`);
     return Observable.throw(err.message);
   }
 
+  getShareVariable(): string {
+    return this.shareVariable;
+  }
+
+  setShareVariable(value: string): void {
+    this.shareVariable = value;
+  }
 }
