@@ -3,7 +3,6 @@ import { IProduct } from './product';
 import { ProductService } from './product.service';
 
 @Component({
-  selector: 'pm-products',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
@@ -54,11 +53,6 @@ export class ProductListComponent implements OnInit {
 
   onRatingClicked(message: string): void {
     this.pageTitle = `Product List : ${message}`;
-  }
-
-  setVariableT(): void {
-    console.log(`Called from product-list component, value before set = ${this._productService.getShareVariable()}`)
-    this._productService.setShareVariable('Set from product-list Component!');
   }
 
 }
